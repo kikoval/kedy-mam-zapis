@@ -152,8 +152,8 @@ var mgr_data = {
     'Matematika - fyzika':
     {
         1: {'time': '8:30', 'date': '16.09.2013', 'room': 'M/II', 'referent': 'Krajčová'},
-        2: {'time': '13:00', 'date': '10.09.2013', 'room': 'M/II', 'referent': 'Krajčová'},
-        3: {'time': '8:30', 'date': '5.09.2013', 'room': 'M/II', 'referent': 'Krajčová'}
+        2: {'time': '8:30', 'date': '10.09.2013', 'room': 'M/II', 'referent': 'Krajčová'},
+        3: {'time': '13:00', 'date': '5.09.2013', 'room': 'M/II', 'referent': 'Krajčová'}
     },
     'Matematika - informatika':
     {
