@@ -1,0 +1,89 @@
+<!doctype html>
+<html ng-app="zapis">
+    <head>
+        <meta charset="utf-8" />
+        <title>Kedy mam zapis?</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+
+        <script src="data.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <style>
+        body {max-width: 50em; margin: 0 auto; font-size: 100%;}
+        #results {margin-top: 1em;}
+        .date, .time {font-size: 120%;}
+        .result-item {padding: 1em; text-align: center;}
+
+        #bc-studium, #mgr-studium {display: none;}
+
+        #footer {margin-top: 2em; border-top: medium solid #CCC;}
+    </style>
+    <script>
+        function bc() {
+            document.getElementById('bc-studium').style.display='block';
+            document.getElementById('mgr-studium').previousSibling.previousSibling.style.display='none';
+        }
+        function mgr() {
+            document.getElementById('mgr-studium').style.display='block';
+            document.getElementById('bc-studium').previousSibling.previousSibling.style.display='none';
+        }
+    </script>
+    <body >
+        <h1>Kedy mam zapis?</h1>
+
+        <p><a href="http://www.fmph.uniba.sk">FMFI UK</a>, akademicky rok 2013/2014.</p>
+        <p>Oficialne data su dostupne na <a href="http://www.fmph.uniba.sk/index.php?id=120">stranke fakulty</a>. Prvaci bc. studia maju <a href="http://www.fmph.uniba.sk/index.php?id=120#c3750">specialne pokyny</a>.</p>
+
+        <div ng-controller="MainController">
+            <h2><a href="#" onclick="bc()">Bc studium</a></h2>
+            <fieldset id="bc-studium">
+                <div>
+                    <label for="bc-odbor">Odbor:</label>
+                    <select id="bc-odbor" ng-model="$parent.vybranyBcOdbor" ng-options="option for option in bcOdbory" ng-change="nacitajBcProgramy()"></select>
+                </div>
+              
+                <div>
+                    <label for="bc-program" ng-show="bcProgramy.length">Studijny program:</label>
+                    <select id="bc-program" ng-model="vybranyBcProgram" ng-options="option for option in bcProgramy" ng-show="bcProgramy.length" ng-change="nacitajBcRoky()"></select>
+                 </div>
+              
+                <div>
+                    <label for="rok-studia" ng-show="bcRoky.length">Rok studia:</label>
+                    <select name="rokStudia" id="rok-studia" ng-model="vybranyBcRokStudia" ng-options="option for option in bcRoky" ng-show="bcRoky.length"></select>
+                </div>
+
+                <button ng-click="findBc()">Hladaj</button>
+            </fieldset>
+
+            <h2><a href="#" onclick="mgr()">Mgr studium</a></h2>
+            <fieldset id="mgr-studium">
+                <div>
+                    <label for="mgr-odbor">Odbor:</label>
+                    <select id="mgr-odbor" ng-model="vybranyMgrOdbor" ng-options="option for option in mgrOdbory" ng-change="nacitajMgrProgramy()"></select>
+                </div>
+              
+                <div>
+                    <label for="mgr-program" ng-show="mgrProgramy.length">Studijny program:</label>
+                    <select id="mgr-program" ng-model="vybranyMgrProgram" ng-options="option for option in mgrProgramy" ng-show="mgrProgramy.length" ng-change="nacitajMgrRoky()"></select>
+                 </div>
+              
+                <div>
+                    <label for="rok-studia" ng-show="mgrRoky.length">Rok studia:</label>
+                    <select name="rokStudia" id="rok-studia" ng-model="vybranyMgrRokStudia" ng-options="option for option in mgrRoky" ng-show="mgrRoky.length"></select>
+            </div>
+
+                <button ng-click="findMgr()">Hladaj</button>
+            </fieldset>
+
+            <div id="results">
+                <div>Studenti <strong>{{ vybranyRokStudia }}</strong> roku studia studijneho programu <strong>{{ vybranyProgram }}</strong> maju zapis:</div>
+                <div class="result-item"><span class="date">{{ result.date }}</span> o <span class="time">{{ result.time }}</span> v miestnosti <span class="room">{{ result.room }}</span> ({{ result.referent }})</div>
+            </div>
+        </div>
+
+        <footer id="footer">
+            <p>Kristian Valentin, 2013. Vytvorene pomocou <a href="http://angularjs.org/">AngularJS</a>. Zdrojovy kod je dostupny na <a href="https://github.com/kikoval/kedy-mam-zapis">GitHub-e</a>.</p>
+        </footer>
+
+  </body>
+</html>
