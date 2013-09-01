@@ -2,7 +2,7 @@
 <html ng-app="zapis">
     <head>
         <meta charset="utf-8" />
-        <title>Kedy mam zapis?</title>
+        <title>Kedy mám zápis?</title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 
         <script src="data.js"></script>
@@ -29,13 +29,13 @@
         }
     </script>
     <body >
-        <h1>Kedy mam zapis?</h1>
+        <h1>Kedy mám zápis?</h1>
 
-        <p><a href="http://www.fmph.uniba.sk">FMFI UK</a>, akademicky rok 2013/2014.</p>
-        <p>Oficialne data su dostupne na <a href="http://www.fmph.uniba.sk/index.php?id=120">stranke fakulty</a>. Prvaci bc. studia maju <a href="http://www.fmph.uniba.sk/index.php?id=120#c3750">specialne pokyny</a>.</p>
+        <p><a href="http://www.fmph.uniba.sk">FMFI UK</a>, akademický rok 2013/2014.</p>
+        <p>Oficiálne dáta sú dostupné na <a href="http://www.fmph.uniba.sk/index.php?id=120">stránke fakulty</a>. Prváci bc. štúdia majú <a href="http://www.fmph.uniba.sk/index.php?id=120#c3750">špeciálne pokyny</a>.</p>
 
         <div ng-controller="MainController">
-            <h2><a href="#" onclick="bc()">Bc studium</a></h2>
+            <h2><a href="#" onclick="bc()">Bc štúdium</a></h2>
             <fieldset id="bc-studium">
                 <div>
                     <label for="bc-odbor">Odbor:</label>
@@ -43,19 +43,19 @@
                 </div>
               
                 <div>
-                    <label for="bc-program" ng-show="bcProgramy.length">Studijny program:</label>
+                    <label for="bc-program" ng-show="bcProgramy.length">Študijný program:</label>
                     <select id="bc-program" ng-model="vybranyBcProgram" ng-options="option for option in bcProgramy" ng-show="bcProgramy.length" ng-change="nacitajBcRoky()"></select>
                  </div>
               
                 <div>
-                    <label for="rok-studia" ng-show="bcRoky.length">Rok studia:</label>
+                    <label for="rok-studia" ng-show="bcRoky.length">Rok štúdia:</label>
                     <select name="rokStudia" id="rok-studia" ng-model="vybranyBcRokStudia" ng-options="option for option in bcRoky" ng-show="bcRoky.length"></select>
                 </div>
 
-                <button ng-click="findBc()">Hladaj</button>
+                <button ng-click="findBc()">Hľadaj</button>
             </fieldset>
 
-            <h2><a href="#" onclick="mgr()">Mgr studium</a></h2>
+            <h2><a href="#" onclick="mgr()">Mgr štúdium</a></h2>
             <fieldset id="mgr-studium">
                 <div>
                     <label for="mgr-odbor">Odbor:</label>
@@ -63,26 +63,27 @@
                 </div>
               
                 <div>
-                    <label for="mgr-program" ng-show="mgrProgramy.length">Studijny program:</label>
+                    <label for="mgr-program" ng-show="mgrProgramy.length">Študijný program:</label>
                     <select id="mgr-program" ng-model="vybranyMgrProgram" ng-options="option for option in mgrProgramy" ng-show="mgrProgramy.length" ng-change="nacitajMgrRoky()"></select>
                  </div>
               
                 <div>
-                    <label for="rok-studia" ng-show="mgrRoky.length">Rok studia:</label>
+                    <label for="rok-studia" ng-show="mgrRoky.length">Rok štúdia:</label>
                     <select name="rokStudia" id="rok-studia" ng-model="vybranyMgrRokStudia" ng-options="option for option in mgrRoky" ng-show="mgrRoky.length"></select>
             </div>
 
-                <button ng-click="findMgr()">Hladaj</button>
+                <button ng-click="findMgr()">Hľadaj</button>
             </fieldset>
 
             <div id="results">
-                <div>Studenti <strong>{{ vybranyRokStudia }}</strong> roku studia studijneho programu <strong>{{ vybranyProgram }}</strong> maju zapis:</div>
+                <div>Študenti <strong>{{ vybranyRokStudia }}</strong> roku štúdia študijného programu <strong>{{ vybranyProgram }}</strong> majú zápis:</div>
                 <div class="result-item"><span class="date">{{ result.date }}</span> o <span class="time">{{ result.time }}</span> v miestnosti <span class="room">{{ result.room }}</span> ({{ result.referent }})</div>
+                <p>Nezabudni <a href="http://www.fmph.uniba.sk/index.php?id=2735">v AISe vykonať predzápis</a>, <a href="http://www.fmph.uniba.sk/index.php?id=120#c2849">zaplatiť validačnú známku</a> a zobrať si preukaz študenta (ISIC).</p>
             </div>
         </div>
 
         <footer id="footer">
-            <p>Kristian Valentin, 2013. Vytvorene pomocou <a href="http://angularjs.org/">AngularJS</a>. Zdrojovy kod je dostupny na <a href="https://github.com/kikoval/kedy-mam-zapis">GitHub-e</a>.</p>
+            <p>Kristián Valentín, 2013. Vytvorené pomocou <a href="http://angularjs.org/">AngularJS</a>. Zdrojový kód je dostupný na <a href="https://github.com/kikoval/kedy-mam-zapis">GitHub-e</a>.</p>
         </footer>
 
   </body>
